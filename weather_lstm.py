@@ -13,12 +13,20 @@ from sklearn.model_selection import train_test_split
 
 
 # Load Data
-print('\nLoading data...\n')
-data = pd.read_csv("data/weatherHistory.csv")
+
+data = pd.read_csv("weatherHistory.csv")
+dates = pd.DataFrame(data.iloc[:,0:1].values)
 temp_data = data.iloc[:,3:4].values #temperature column only
 temp_data
+print(type(dates))
 
 
+# Optional Filter
+
+filter_active = 0
+if filter_active == True:
+  temp_data = medfilt(temp_data, 3)
+  temp_data = gaussian_filter1d(temp_data, 1.2)
 
 
 # Encode the data
@@ -47,33 +55,79 @@ x_train = np.reshape(x_train, (x_train.shape[0] , x_train.shape[1], 1) )
 
 
 
-
-
 # LSTM Model Defninition
-print("\nDefining and Building LSTM Models...\n")
+
 model = Sequential()
 model.add(Bidirectional(LSTM(units=50, 
-                             activation= "sigmoid", 
+                             activation= "relu", 
                              return_sequences=True, 
                              input_shape = (x_train.shape[1], 1))))
 model.add(Dropout(0.2))
 model.add(LSTM(units= 50, return_sequences=True))
 model.add(Dropout(0.2))
+model.add(LSTM(units= 50, return_sequences=True))
+model.add(Dropout(0.2))
 model.add(LSTM(units= 50))
-model.add(Dense(units = n_future , activation="sigmoid"))  
+model.add(Dense(units = n_future , activation="relu"))  
 
 
+# Extra Model Functionality
+
+# Model Checkpoint 
+checkpoint_filepath = '/checkpoints'
+checkpoint = ModelCheckpoint(
+    filepath=checkpoint_filepath,
+    save_weights_only=True,
+    monitor='loss',
+    mode='max',
+    save_best_only=True)
 
 
+# Early Stopping
+stopping = EarlyStopping(monitor='loss', patience=5)
 
 
 
 # Train Model
-print("\nTraining Model \n")
+
 model.compile(optimizer='adam', 
               loss = 'mean_squared_error', 
               metrics='accuracy')
-model.fit(x_train, 
+history = model.fit(x_train, 
           y_train, 
-          epochs=100, 
-          batch_size=128)
+          epochs=5, 
+          batch_size=100,
+          verbose=1,
+          callbacks=[checkpoint, stopping]
+          )
+
+
+
+# Visualize Metrics
+
+# Loss
+def visualize_loss(history, title):
+    loss = history.history["loss"]
+    epochs = range(len(loss))
+    plt.figure()
+    plt.plot(epochs, loss, "ro--", label="Training loss")
+    plt.title(title)
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss")
+    plt.show()
+
+# Accuracy
+def visualize_acc(history, title):
+    acc = history.history["accuracy"]
+    epochs = range(len(acc))
+    plt.figure()
+    plt.plot(epochs, acc, "ro--", label="Training loss")
+    plt.title(title)
+    plt.xlabel("Epochs")
+    plt.ylabel("Accuracy")
+    plt.show()
+
+
+
+visualize_loss(history, "Training Loss")
+visualize_acc(history, "Training Accuracy")
