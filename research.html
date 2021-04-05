@@ -5,70 +5,142 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Research - Weather Prediction</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<head>
+	<title>Research - Weather Prediction</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Weather Prediction</a>
-					</header>
+<body class="is-preload">
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="research.html">Research</a></li>
-							<li><a href="visuals.html">Visuals</a></li>
-							<li><a href="ml.html">Machine Learning</a></li>
-							<li><a href="reference.html">Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="http://www.instagram.com/robotgyal" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="https://github.com/RobotGyal/Project-Impact-2020" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="http://www.linkedin.com/in/aleiaknight" class="icon brands fa-linkedin"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-				<!-- Main -->
-					<div id="main">
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo">Weather Prediction</a>
+		</header>
 
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<span class="date">August 2020</span>
-									<h1>Research</h1>
-									<p>Find here details about meteorites.</p>
-								</header>
-								<p></p>
-                                <p></p>
-							</section>
-					</div>
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="research.html">Research</a></li>
+				<li><a href="visuals.html">Visuals</a></li>
+				<li><a href="ml.html">Machine Learning</a></li>
+				<li><a href="reference.html">Reference</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="http://www.instagram.com/robotgyal" class="icon brands fa-instagram"><span
+							class="label">Instagram</span></a></li>
+				<li><a href="https://github.com/RobotGyal/Project-Impact-2020" class="icon brands fa-github"><span
+							class="label">GitHub</span></a></li>
+				<li><a href="http://www.linkedin.com/in/aleiaknight" class="icon brands fa-linkedin"><span
+							class="label">GitHub</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<section class="post">
+				<header class="major">
+					<span class="date">March 2021 - Present</span>
+					<h1>Research</h1>
+					<p>Find here details about LSTM Models.</p>
+				</header>
+				<p><em>“… LSTM holds promise for any sequential processing task in which we suspect that a hierarchical
+						decomposition may exist, but do not know in advance what this decomposition is.”</em><br>
+					— Felix A. Gers, et al., Learning to Forget: Continual Prediction with LSTM, 2000
+				</p>
+				<p>LSTM (Long short term Memory) is a type of Recurrent Neural Network in Deep Learning that has been
+					specifically developed for the use of handling sequence prediction problems. For example:
+					<ul>
+						<li>Weather Forecasting</li>
+						<li>Stock Market Prediction</li>
+						<li>Product Recommendation</li>
+						<li>Text/Image/Handwriting Generation</li>
+						<li>Text Translation</li>
+					</ul>
+
+				</p>
+				<p><em>“Since LSTMs are effective at capturing long-term temporal dependencies without suffering from
+						the optimization hurdles that plague simple recurrent networks (SRNs), they have been used to
+						advance the state of the art for many difficult problems. This includes handwriting recognition
+						and generation, language modeling and translation, acoustic modeling of speech, speech
+						synthesis, protein secondary structure prediction, analysis of audio, and video data among
+						others.”</em><br>
+					— Klaus Greff, et al., LSTM: A Search Space Odyssey, 2015
+				</p>
+				<p>Like other Neural Networks, they contain neurons to perform computation, however for LSTM, they are
+					often referred to as memory cells or simply cells. These cells contain weights and gates; the gates
+					being the distinguishing feature of LSTM models. There are 3 gates inside of every cell. The input
+					gate, the forget gate, and the output gate.
+				</p>
+				<img src="img/lstm.png" style="max-width:100%" alt="" />
+				<p><em>“The Long Short Term Memory architecture was motivated by an analysis of error flow in existing
+						RNNs which found that long time lags were inaccessible to existing architectures, because
+						backpropagated error either blows up or decays exponentially. An LSTM layer consists of a set of
+						recurrently connected blocks, known as memory blocks. These blocks can be thought of as a
+						differentiable version of the memory chips in a digital computer. Each one contains one or more
+						recurrently connected memory cells and three multiplicative units - the input, output and forget
+						gates - that provide continuous analogues of write, read and reset operations for the cells. ...
+						The net can only interact with the cells via the gates.”</em>
+					Framewise Phoneme Classification with Bidirectional LSTM and Other Neural Network Architectures,
+					2005.
+				</p>
+				<p><strong>The Cell State</strong></p>
+				<img src="img/cell.png" style="max-width:100%" alt="" />
+				<p> The cell state is sort of like a conveyor belt that moves the data along through the cell. It gets
+					altered and updated according to the results from the forget and input gates.
+				</p>
+				<p><strong>The Forget State</strong></p>
+				<img src="img/forget.png" style="max-width:100%" alt="" />
+				<p> This gate removes unneeded information before merging with the cell state. It takes in 2 inputs, new information (x_t) and the previous cells output (h_t-1). Similar to the input gate, it runs these inputs through a sigmoid gate to filter out unneeded data, and then merges it with the cell state via multiplication. 
+
+				</p>
+				<p><strong>The Input State</strong></p>
+				<img src="img/input.png" style="max-width:100%" alt="" />
+				<p> This gate adds information to the cell state. It employs a sigmoid gate to determine what amount of information needs to be kept. It uses the tanh function to create a vector for the information to be added. It then multiplies the results from the sigmoid gate and tanh functions and adds the useful information to the cell state using addition. 
+				</p>
+				<p><strong>The Output State</strong>
+				</p>
+				<img src="img/output.png" style="max-width:100%" alt="" />
+				<p> Selects useful information based on cell state, the previous cell output, and new data. It does this by taking the cell state, after the input gate and forget gate merge, and runs it through a tanh function to create a vector. It then takes the new data and previous cell output and runs them through a sigmoid function to find what values need to be outputted. The results of those 2 operations are then multiplied and returned as this cells output. 
+				</p><hr>
+				<h2><strong>Formulas</strong></h2><br>
+				<img src="img/formulas.png" style="max-width:100%" alt="" />
+				<img src="img/variables.png" style="max-width:100%" alt="" />
+				
+
+			</section>
+		</div>
 
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>&copy; Untitled</li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
 
-			</div>
+	</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
-	</body>
+</body>
+
 </html>
